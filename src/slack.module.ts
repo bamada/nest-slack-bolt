@@ -25,7 +25,7 @@ const slackServiceFactory = {
 };
 
 @Module({
-  imports: [ConfigModule],
+  imports: [ConfigModule.forRoot()],
   providers: [ExplorerService, LoggerProxy, SlackService, slackServiceFactory],
   exports: [SlackService],
 })
