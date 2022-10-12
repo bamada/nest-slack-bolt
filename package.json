@@ -4,7 +4,10 @@
   "description": "A Nestjs module using Slack Bold SDK",
   "author": "",
   "private": true,
-  "license": "UNLICENSED",
+  "license": "Apache-2.0",
+  "files": [
+    "dist/"
+  ],
   "scripts": {
     "test": "jest",
     "build": "tsc -p tsconfig.json",
