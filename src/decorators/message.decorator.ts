@@ -1,5 +1,5 @@
-import { MetadataBase } from 'src/decorators/base.decorator';
-import { SLACK_MESSAGE_METADATA } from 'src/decorators/constants';
+import { MetadataBase } from './base.decorator';
+import { SLACK_MESSAGE_METADATA } from './constants';
 
 /**
  * Decorator may listen and react to slack Message events.

@@ -5,9 +5,9 @@ import {
   SLACK_ACTION_METADATA,
   SLACK_COMMAND_METADATA,
   SLACK_MESSAGE_METADATA,
-} from 'src/decorators/constants';
-import { InvalidEventException } from 'src/exceptions/invalid-event.exception';
-import { IMetadataBase } from 'src/interfaces/metadata/metadata.interface';
+} from '../decorators/constants';
+import { InvalidEventException } from '../exceptions/invalid-event.exception';
+import { IMetadataBase } from '../interfaces/metadata/metadata.interface';
 
 const MESSAGE = 'Message';
 const COMMAND = 'Command';

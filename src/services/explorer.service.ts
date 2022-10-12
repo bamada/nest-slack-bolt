@@ -7,10 +7,10 @@ import {
   SLACK_ACTION_METADATA,
   SLACK_COMMAND_METADATA,
   SLACK_MESSAGE_METADATA,
-} from 'src/decorators/constants';
-import { IEventHandler } from 'src/interfaces/events/event-handler.interface';
-import { IEvent } from 'src/interfaces/events/event.interface';
-import { IMetadataBase } from 'src/interfaces/metadata/metadata.interface';
+} from '../decorators/constants';
+import { IEventHandler } from '../interfaces/events/event-handler.interface';
+import { IEvent } from '../interfaces/events/event.interface';
+import { IMetadataBase } from '../interfaces/metadata/metadata.interface';
 
 @Injectable()
 export class ExplorerService {

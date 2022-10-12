@@ -1,9 +1,9 @@
 import { Module, OnApplicationBootstrap } from '@nestjs/common';
-import { ExplorerService } from 'src/services/explorer.service';
-import { SlackService } from 'src/services/slack.service';
+import { ExplorerService } from './services/explorer.service';
+import { SlackService } from './services/slack.service';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { App, AppOptions } from '@slack/bolt';
-import { LoggerProxy } from 'src/loggers/logger.proxy';
+import { LoggerProxy } from './loggers/logger.proxy';
 
 const SLACK = 'Slack';
 
