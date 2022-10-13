@@ -9,8 +9,6 @@
 
 
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
-[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg?style=flat-square)](http://commitizen.github.io/cz-cli/)
-![Release](https://github.com/bjerkio/nestjs-slack/workflows/Release/badge.svg)
 
 ---
 ## Description
@@ -25,26 +23,72 @@
 
 ```bash
 # yarn
-$ yarn add ***
+$ yarn add nestjs-slack-bolt
 
 # npm
-$ npm i ***
+$ npm i nestjs-slack-bolt
 ```
 
 ## Usage
-
+Add these variables to the `.env` file
 ```bash
-*****
+SLACK_SIGNING_SECRET="**"
+SLACK_BOT_TOKEN="**"
+APP_TOKEN="**"
+SOCKET_MODE=true
 ```
 
+Import the `SlackModule`
+```typescript
+import { Module } from '@nestjs/common';
+import { SlackModule } from 'nestjs-slack-bolt';
+import { AppController } from './app.controller';
+import { AppService } from './app.service';
+
+@Module({
+  imports: [SlackModule],
+  controllers: [AppController],
+  providers: [AppService],
+})
+export class AppModule {}
+```
 ## Example
 
-```bash
-*****
+```typescript
+import { Controller } from '@nestjs/common';
+import { Action, Command, Message } from 'nestjs-slack-bolt';
+import { AppService } from './app.service';
+import {
+  SlackActionMiddlewareArgs,
+  SlackCommandMiddlewareArgs,
+  SlackEventMiddlewareArgs,
+} from '@slack/bolt';
+
+@Controller()
+export class AppController {
+  constructor(private readonly appService: AppService) {}
+
+  @Message('hi') //Handle a message event
+  message({ say }: SlackEventMiddlewareArgs) {
+    say('Hello');
+  }
+
+  @Action('click') //Handle an action
+  action({ say }: SlackActionMiddlewareArgs) {
+    say('click event received');
+  }
+
+  @Command('/list')  // handle command
+  command({ say }: SlackCommandMiddlewareArgs) {
+    say('/list command received');
+  }
+}
+
 ```
 
 ## TODO
-....
+- Improve testing
+- handle additional slack events
 
 ## Contribute & Disclaimer
 ....
