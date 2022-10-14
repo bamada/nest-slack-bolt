@@ -36,11 +36,11 @@ Add these variables to the `.env` file
 SLACK_SIGNING_SECRET="**"
 
 # to define on Socket mode
-APP_TOKEN="**"
+SLACK_APP_TOKEN="**"
 
 # require variables
 SLACK_BOT_TOKEN="**"
-SOCKET_MODE=true
+SLACK_SOCKET_MODE=true
 
 ```
 

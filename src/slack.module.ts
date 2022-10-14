@@ -16,10 +16,10 @@ const slackServiceFactory = {
       logger: loggerProxy,
       token: configService.get('SLACK_BOT_TOKEN'),
       signingSecret: configService.get('SLACK_SIGNING_SECRET'),
-      socketMode: !!configService.get<boolean>('SOCKET_MODE'),
-      appToken: configService.get('APP_TOKEN'),
+      socketMode: !!configService.get<boolean>('SLACK_SOCKET_MODE'),
+      appToken: configService.get('SLACK_APP_TOKEN'),
     };
-    return new App({ socketMode: true });
+    return new App(options);
   },
   inject: [ConfigService, LoggerProxy],
 };
