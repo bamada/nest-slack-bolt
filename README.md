@@ -32,10 +32,16 @@ $ npm i nestjs-slack-bolt
 ## Usage
 Add these variables to the `.env` file
 ```bash
+# to define on API mode
 SLACK_SIGNING_SECRET="**"
-SLACK_BOT_TOKEN="**"
+
+# to define on Socket mode
 APP_TOKEN="**"
+
+# require variables
+SLACK_BOT_TOKEN="**"
 SOCKET_MODE=true
+
 ```
 
 Import the `SlackModule`

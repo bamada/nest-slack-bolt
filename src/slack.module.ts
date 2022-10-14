@@ -19,7 +19,7 @@ const slackServiceFactory = {
       socketMode: !!configService.get<boolean>('SOCKET_MODE'),
       appToken: configService.get('APP_TOKEN'),
     };
-    return new App(options);
+    return new App({ socketMode: true });
   },
   inject: [ConfigService, LoggerProxy],
 };
