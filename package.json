@@ -4,6 +4,7 @@
   "description": "A Nestjs module using Slack Bold SDK",
   "author": "",
   "license": "Apache-2.0",
+  "url": "https://github.com/bamada/nest-slack-bolt#readme",
   "scripts": {
     "test": "jest",
     "build": "tsc -p tsconfig.json",
@@ -75,5 +76,9 @@
     ],
     "coverageDirectory": "../coverage",
     "testEnvironment": "node"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bamada/nest-slack-bolt"
   }
 }
