@@ -1,7 +1,9 @@
 /**
  * Decorator may listen and react to various slack events (Message, Command).
  */
-export const MetadataBase = <T = string | RegExp>(metadataKey: string) => {
+export const MetadataBase = <T extends string | RegExp = string | RegExp>(
+  metadataKey: string,
+) => {
   return (pattern: T) => {
     return (target: object, propertyKey: string | symbol) => {
       const properties =

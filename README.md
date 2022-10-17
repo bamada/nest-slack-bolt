@@ -15,9 +15,10 @@
 ...
 
 ## Features
-- Handle Message
-- Handle Command
-- Handle Action
+- Handle Messages
+- Handle Commands
+- Handle Actions
+- Handle Events
 
 ## Installation
 
@@ -62,7 +63,7 @@ export class AppModule {}
 
 ```typescript
 import { Controller } from '@nestjs/common';
-import { Action, Command, Message } from 'nestjs-slack-bolt';
+import { Action, Command, Message, Event } from 'nestjs-slack-bolt';
 import { AppService } from './app.service';
 import {
   SlackActionMiddlewareArgs,
@@ -87,6 +88,11 @@ export class AppController {
   @Command('/list')  // handle command
   command({ say }: SlackCommandMiddlewareArgs) {
     say('/list command received');
+  }
+
+  @Event('app_home_opened')
+  event({ say }: SlackEventMiddlewareArgs) {
+    say('app_open_event received');
   }
 }
 

@@ -61,12 +61,15 @@ export class SlackService implements OnModuleInit {
     );
   }
 
-  register<T extends IMetadataBase, K = string | RegExp>(
+  register<
+    T extends IMetadataBase,
+    K extends string | RegExp = string | RegExp,
+  >(
     types: Type<unknown>[],
     metadataKey: string,
     eventType: string,
     callback: (pattern: K, fn: () => Promise<void>) => void,
-  ) {
+  ): void {
     const eventHandlers = types
       .map((target) => {
         const metadata = Reflect.getMetadata(metadataKey, target) || [];
