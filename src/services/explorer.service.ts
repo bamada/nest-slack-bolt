@@ -6,6 +6,7 @@ import { ModulesContainer } from '@nestjs/core/injector/modules-container';
 import {
   SLACK_ACTION_METADATA,
   SLACK_COMMAND_METADATA,
+  SLACK_EVENT_METADATA,
   SLACK_MESSAGE_METADATA,
 } from '../decorators/constants';
 import { IEventHandler } from '../interfaces/events/event-handler.interface';
@@ -34,7 +35,11 @@ export class ExplorerService {
       this.filterProvider(instance, SLACK_COMMAND_METADATA),
     );
 
-    return { messages, actions, commands };
+    const events = this.flatMap<IEventHandler<IEvent>>(modules, (instance) =>
+      this.filterProvider(instance, SLACK_EVENT_METADATA),
+    );
+
+    return { messages, actions, commands, events };
   }
 
   flatMap<T>(

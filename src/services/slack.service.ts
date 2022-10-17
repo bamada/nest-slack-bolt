@@ -4,6 +4,7 @@ import { App } from '@slack/bolt';
 import {
   SLACK_ACTION_METADATA,
   SLACK_COMMAND_METADATA,
+  SLACK_EVENT_METADATA,
   SLACK_MESSAGE_METADATA,
 } from '../decorators/constants';
 import { InvalidEventException } from '../exceptions/invalid-event.exception';
@@ -12,6 +13,7 @@ import { IMetadataBase } from '../interfaces/metadata/metadata.interface';
 const MESSAGE = 'Message';
 const COMMAND = 'Command';
 const ACTION = 'Action';
+const EVENT = 'Event';
 
 @Injectable()
 export class SlackService implements OnModuleInit {
@@ -44,17 +46,26 @@ export class SlackService implements OnModuleInit {
     );
   }
 
+  registerEvents(events: Type<unknown>[]) {
+    this.register<IMetadataBase<string>, string>(
+      events,
+      SLACK_EVENT_METADATA,
+      EVENT,
+      (pattern, callback) => this.app.event(pattern, callback),
+    );
+  }
+
   registerActions(actions: Type<unknown>[]) {
     this.register(actions, SLACK_ACTION_METADATA, ACTION, (pattern, callback) =>
       this.app.action(pattern, callback),
     );
   }
 
-  register<T extends IMetadataBase>(
+  register<T extends IMetadataBase, K = string | RegExp>(
     types: Type<unknown>[],
     metadataKey: string,
     eventType: string,
-    callback: (pattern: string | RegExp, fn: () => Promise<void>) => void,
+    callback: (pattern: K, fn: () => Promise<void>) => void,
   ) {
     const eventHandlers = types
       .map((target) => {
@@ -71,11 +82,9 @@ export class SlackService implements OnModuleInit {
       })
       .reduce((a, b) => [...a, ...b], []);
 
-    eventHandlers.forEach(
-      (event: { pattern: string | RegExp; fn: () => Promise<void> }) => {
-        callback(event.pattern, event.fn);
-        this._logger.log(`Mapped {'${event.pattern}', ${eventType}} event`);
-      },
-    );
+    eventHandlers.forEach((event: { pattern: K; fn: () => Promise<void> }) => {
+      callback(event.pattern, event.fn);
+      this._logger.log(`Mapped {'${event.pattern}', ${eventType}} event`);
+    });
   }
 }
