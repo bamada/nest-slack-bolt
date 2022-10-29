@@ -11,3 +11,6 @@ tsconfig.json
 .release-it.json
 .eslintignore
 .eslintrc.js
+
+# Env files
+.env
