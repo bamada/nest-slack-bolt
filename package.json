@@ -3,7 +3,7 @@
   "version": "0.0.4",
   "description": "A Nestjs module using Slack Bold SDK",
   "author": "bamada",
-  "license": "Apache-2.0",
+  "license": "MIT",
   "url": "https://github.com/bamada/nest-slack-bolt#readme",
   "scripts": {
     "test": "jest",

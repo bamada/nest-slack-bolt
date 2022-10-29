@@ -12,7 +12,7 @@
 
 ---
 ## Description
-...
+This module gives a handy way to develop Slack applications using the Nestjs framework
 
 ## Features
 - Handle Messages
