@@ -32,6 +32,7 @@
     "@nestjs/cli": "9.1.5",
     "@nestjs/schematics": "9.0.3",
     "@nestjs/testing": "9.1.6",
+    "@release-it/conventional-changelog": "^5.1.1",
     "@types/jest": "29.2.0",
     "@types/node": "18.11.7",
     "@types/supertest": "2.0.12",
@@ -81,10 +82,5 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/bamada/nest-slack-bolt"
-  },
-  "release-it": {
-    "github": {
-      "release": true
-    }
   }
 }
