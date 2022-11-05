@@ -6,12 +6,14 @@ import {
   SLACK_COMMAND_METADATA,
   SLACK_EVENT_METADATA,
   SLACK_MESSAGE_METADATA,
+  SLACK_SHORTCUT_METADATA,
 } from '../decorators/constants';
 import { InvalidEventException } from '../exceptions/invalid-event.exception';
 import { IMetadataBase } from '../interfaces/metadata/metadata.interface';
 
 const MESSAGE = 'Message';
 const COMMAND = 'Command';
+const SHORTCUT = 'Shortcut';
 const ACTION = 'Action';
 const EVENT = 'Event';
 
@@ -43,6 +45,15 @@ export class SlackService implements OnModuleInit {
       SLACK_COMMAND_METADATA,
       COMMAND,
       (pattern, callback) => this.app.command(pattern, callback),
+    );
+  }
+
+  registerShortcuts(shortcuts: Type<unknown>[]) {
+    this.register(
+      shortcuts,
+      SLACK_SHORTCUT_METADATA,
+      SHORTCUT,
+      (pattern, callback) => this.app.shortcut(pattern, callback),
     );
   }
 
