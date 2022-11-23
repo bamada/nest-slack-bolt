@@ -8,6 +8,7 @@ import {
   SLACK_COMMAND_METADATA,
   SLACK_EVENT_METADATA,
   SLACK_MESSAGE_METADATA,
+  SLACK_SHORTCUT_METADATA,
 } from '../decorators/constants';
 import { IEventHandler } from '../interfaces/events/event-handler.interface';
 import { IEvent } from '../interfaces/events/event.interface';
@@ -39,7 +40,11 @@ export class ExplorerService {
       this.filterProvider(instance, SLACK_EVENT_METADATA),
     );
 
-    return { messages, actions, commands, events };
+    const shortcuts = this.flatMap<IEventHandler<IEvent>>(modules, (instance) =>
+      this.filterProvider(instance, SLACK_SHORTCUT_METADATA),
+    );
+
+    return { messages, actions, commands, events, shortcuts };
   }
 
   flatMap<T>(
