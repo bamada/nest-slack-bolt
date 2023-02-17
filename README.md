@@ -7,14 +7,16 @@
 
 <p align="center">A <a href="http://nestjs.com/" target="blank">Nestjs</a> module to interact with <a href="http://nodejs.org" target="_blank">Slack</a> API using <a href="https://api.slack.com/bolt">Bolt</a> SDK</p>
 
-
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
 
 ---
+
 ## Description
+
 This module gives a handy way to develop Slack applications using the Nestjs framework
 
 ## Features
+
 - Handle Messages
 - Handle Commands
 - Handle Actions
@@ -31,7 +33,9 @@ $ npm i nestjs-slack-bolt
 ```
 
 ## Usage
+
 Add these variables to the `.env` file
+
 ```bash
 # to define on API mode
 SLACK_SIGNING_SECRET="**"
@@ -46,6 +50,7 @@ SLACK_SOCKET_MODE=true
 ```
 
 Import the `SlackModule`
+
 ```typescript
 import { Module } from '@nestjs/common';
 import { SlackModule } from 'nestjs-slack-bolt';
@@ -59,7 +64,10 @@ import { AppService } from './app.service';
 })
 export class AppModule {}
 ```
+
 ## Example
+
+Using annotation
 
 ```typescript
 import { Controller } from '@nestjs/common';
@@ -85,7 +93,7 @@ export class AppController {
     say('click event received');
   }
 
-  @Command('/list')  // handle command
+  @Command('/list') // handle command
   command({ say }: SlackCommandMiddlewareArgs) {
     say('/list command received');
   }
@@ -95,12 +103,52 @@ export class AppController {
     say('app_open_event received');
   }
 }
+```
 
+## Example
+
+Using the SlackService
+
+```typescript
+import { Controller } from '@nestjs/common';
+import { ConfigService } from '@nestjs/config';
+import { SlackService } from 'nestjs-slack-bolt/dist/services/slack.service';
+import { Cron, CronExpression } from '@nestjs/schedule';
+import { from } from 'rxjs';
+
+@Controller()
+export class AppController {
+  constructor(
+    private readonly slackService: SlackService,
+    private readonly configService: ConfigService,
+  ) {}
+
+  @Cron(CronExpression.EVERY_10_SECONDS)
+  cronJob() {
+    this.searchUsers()
+      .pipe()
+      .subscribe((users) => {
+        console.log(JSON.stringify(users));
+      });
+  }
+
+  searchUsers(cursor?: string) {
+    return from(
+      this.slackService.app.client.users.list({
+        token: this.configService.get('SLACK_BOT_TOKEN'),
+        limit: 1,
+        ...(cursor && { cursor }),
+      }),
+    );
+  }
+}
 ```
 
 ## TODO
+
 - Improve testing
 - handle additional slack events
 
 ## Contribute & Disclaimer
+
 ....
