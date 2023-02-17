@@ -112,7 +112,7 @@ Using the SlackService
 ```typescript
 import { Controller } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
-import { SlackService } from 'nestjs-slack-bolt/dist/services/slack.service';
+import { SlackService } from 'nestjs-slack-bolt/services/slack.service';
 import { Cron, CronExpression } from '@nestjs/schedule';
 import { from } from 'rxjs';
 
@@ -134,7 +134,7 @@ export class AppController {
 
   searchUsers(cursor?: string) {
     return from(
-      this.slackService.app.client.users.list({
+      this.slackService.client.users.list({
         token: this.configService.get('SLACK_BOT_TOKEN'),
         limit: 1,
         ...(cursor && { cursor }),

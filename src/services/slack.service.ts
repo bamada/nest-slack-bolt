@@ -32,10 +32,17 @@ export class SlackService implements OnModuleInit {
   }
 
   /**
-   * Returns the app instance
+   * Returns the Slack App instance
    */
   get app() {
     return this._app;
+  }
+
+  /**
+   * Returns the Slack Web API client
+   */
+  get client() {
+    return this._app.client;
   }
 
   registerMessages(messages: Type<unknown>[]) {
