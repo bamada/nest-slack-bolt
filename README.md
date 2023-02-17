@@ -67,7 +67,7 @@ export class AppModule {}
 
 ## Example
 
-Using annotation
+Using annotations
 
 ```typescript
 import { Controller } from '@nestjs/common';
