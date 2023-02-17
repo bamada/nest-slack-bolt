@@ -33,7 +33,7 @@ export class SlackModule implements OnApplicationBootstrap {
   constructor(
     private readonly slackService: SlackService,
     private readonly explorerService: ExplorerService,
-  ) {}
+  ) { }
 
   onApplicationBootstrap() {
     const { messages, actions, commands, events, shortcuts } =
