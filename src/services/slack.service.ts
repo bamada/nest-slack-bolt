@@ -24,18 +24,26 @@ export class SlackService implements OnModuleInit {
   constructor(
     private readonly moduleRef: ModuleRef,
     @Inject('CONNECTION')
-    private readonly app: App,
-  ) {}
+    private readonly _app: App,
+  ) { }
 
   onModuleInit() {
-    this.app.start();
+    this._app.start();
   }
+
+  /**
+   * Returns the app instance
+   */
+  get app() {
+    return this._app;
+  }
+
   registerMessages(messages: Type<unknown>[]) {
     this.register(
       messages,
       SLACK_MESSAGE_METADATA,
       MESSAGE,
-      (pattern, callback) => this.app.message(pattern, callback),
+      (pattern, callback) => this._app.message(pattern, callback),
     );
   }
 
@@ -44,7 +52,7 @@ export class SlackService implements OnModuleInit {
       commands,
       SLACK_COMMAND_METADATA,
       COMMAND,
-      (pattern, callback) => this.app.command(pattern, callback),
+      (pattern, callback) => this._app.command(pattern, callback),
     );
   }
 
@@ -53,7 +61,7 @@ export class SlackService implements OnModuleInit {
       shortcuts,
       SLACK_SHORTCUT_METADATA,
       SHORTCUT,
-      (pattern, callback) => this.app.shortcut(pattern, callback),
+      (pattern, callback) => this._app.shortcut(pattern, callback),
     );
   }
 
@@ -62,13 +70,13 @@ export class SlackService implements OnModuleInit {
       events,
       SLACK_EVENT_METADATA,
       EVENT,
-      (pattern, callback) => this.app.event(pattern, callback),
+      (pattern, callback) => this._app.event(pattern, callback),
     );
   }
 
   registerActions(actions: Type<unknown>[]) {
     this.register(actions, SLACK_ACTION_METADATA, ACTION, (pattern, callback) =>
-      this.app.action(pattern, callback),
+      this._app.action(pattern, callback),
     );
   }
 
