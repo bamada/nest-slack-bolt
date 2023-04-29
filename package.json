@@ -24,7 +24,7 @@
     "@nestjs/common": "^9.0.0",
     "@nestjs/config": "2.3.1",
     "@nestjs/core": "^9.0.0",
-    "@slack/bolt": "3.12.2",
+    "@slack/bolt": "3.13.1",
     "husky": "8.0.3",
     "reflect-metadata": "0.1.13"
   },
