@@ -33,7 +33,7 @@
     "@nestjs/schematics": "9.1.0",
     "@nestjs/testing": "9.3.12",
     "@release-it/conventional-changelog": "^5.1.1",
-    "@types/jest": "29.5.0",
+    "@types/jest": "29.5.1",
     "@types/node": "18.15.11",
     "@types/supertest": "2.0.12",
     "@typescript-eslint/eslint-plugin": "5.57.0",
