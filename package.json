@@ -21,17 +21,17 @@
   "dependencies": {
     "@commitlint/cli": "17.7.1",
     "@commitlint/config-angular": "17.7.0",
-    "@nestjs/common": "^9.0.0",
+    "@nestjs/common": "^10.0.0",
     "@nestjs/config": "2.3.4",
-    "@nestjs/core": "^9.0.0",
+    "@nestjs/core": "^10.0.0",
     "@slack/bolt": "3.13.3",
     "husky": "8.0.3",
     "reflect-metadata": "0.1.13"
   },
   "devDependencies": {
     "@nestjs/cli": "10.1.12",
-    "@nestjs/schematics": "9.2.0",
-    "@nestjs/testing": "9.4.3",
+    "@nestjs/schematics": "10.0.2",
+    "@nestjs/testing": "10.1.3",
     "@release-it/conventional-changelog": "^5.1.1",
     "@types/jest": "29.5.3",
     "@types/node": "18.17.5",
