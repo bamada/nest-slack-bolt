@@ -1,5 +1,28 @@
 
 
+# [0.2.0](https://github.com/bamada/nest-slack-bolt/compare/0.1.0...0.2.0) (2023-08-18)
+
+
+### Bug Fixes
+
+* **deps:** update commitlint monorepo ([f2e31a4](https://github.com/bamada/nest-slack-bolt/commit/f2e31a4e45f4f2cd79b55109ef42d39d9fd72f5d))
+* **deps:** update commitlint monorepo to v17.4.4 ([5b2bb98](https://github.com/bamada/nest-slack-bolt/commit/5b2bb9893996775fd50fa08846231822ce6a5b38))
+* **deps:** update commitlint monorepo to v17.6.3 ([5ff999b](https://github.com/bamada/nest-slack-bolt/commit/5ff999b8a1458b13469d66c8f2cf2fca2623c32c))
+* **deps:** update dependency @commitlint/cli to v17.5.0 ([57b8c4e](https://github.com/bamada/nest-slack-bolt/commit/57b8c4ec674c0498e47d5bf07ab1a41945b832f7))
+* **deps:** update dependency @commitlint/cli to v17.5.1 ([04946dd](https://github.com/bamada/nest-slack-bolt/commit/04946dde18661552dbb38495876df89b0de209e5))
+* **deps:** update dependency @nestjs/config to v2.3.4 ([33a3c0b](https://github.com/bamada/nest-slack-bolt/commit/33a3c0b46756be6253993796a4627bae90ddcd59))
+* **deps:** update dependency @slack/bolt to v3.13.1 ([5d69541](https://github.com/bamada/nest-slack-bolt/commit/5d69541714cd2a93c88fac85fac7c1ed71544d92))
+* **deps:** update dependency @slack/bolt to v3.13.3 ([c00482a](https://github.com/bamada/nest-slack-bolt/commit/c00482aea2d69d980ff4730329e550613bccbb7f))
+* **deps:** update nest monorepo ([647ad4f](https://github.com/bamada/nest-slack-bolt/commit/647ad4fde9f688935697c870940518284bd48355))
+* **deps:** update nest monorepo to v9.3.12 ([1f64a8d](https://github.com/bamada/nest-slack-bolt/commit/1f64a8d494892ab00e3f64e34dc56ce4b3068b9c))
+* **deps:** update nest monorepo to v9.4.0 ([8211575](https://github.com/bamada/nest-slack-bolt/commit/8211575828720797958ea83ddde20ce2754a19d8))
+* **readme:** Fix readme link ([05e64ae](https://github.com/bamada/nest-slack-bolt/commit/05e64aed8cabceab54eb59528fb4eae0786b6867))
+
+
+### Features
+
+* **dep:** upgrade to nestjs10 ([8092af6](https://github.com/bamada/nest-slack-bolt/commit/8092af68fbd2db6ee849b0c6e866833ebdbf37c1))
+
 # [0.1.0](https://github.com/bamada/nest-slack-bolt/compare/0.0.7...0.1.0) (2023-02-17)
 
 
