@@ -59,7 +59,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 
 @Module({
-  imports: [SlackModule],
+  imports: [SlackModule.forRoot()],
   controllers: [AppController],
   providers: [AppService],
 })
