@@ -1,8 +1,8 @@
 {
-  "name": "@nadir2k/nestjs-slack-bolt",
+  "name": "nestjs-slack-bolt",
   "version": "0.2.0",
   "description": "A Nestjs module using Slack Bold SDK",
-  "author": "nadir2k",
+  "author": "bamada",
   "license": "MIT",
   "url": "https://github.com/bamada/nest-slack-bolt#readme",
   "scripts": {
