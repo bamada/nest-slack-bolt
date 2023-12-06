@@ -3,3 +3,4 @@ export * from './message.decorator';
 export * from './command.decorator';
 export * from './event.decorator';
 export * from './shortcut.decorator';
+export * from './view.decorator';

@@ -7,6 +7,7 @@ import {
   SLACK_EVENT_METADATA,
   SLACK_MESSAGE_METADATA,
   SLACK_SHORTCUT_METADATA,
+  SLACK_VIEW_METADATA,
 } from '../decorators/constants';
 import { InvalidEventException } from '../exceptions/invalid-event.exception';
 import { IMetadataBase } from '../interfaces/metadata/metadata.interface';
@@ -16,6 +17,7 @@ const COMMAND = 'Command';
 const SHORTCUT = 'Shortcut';
 const ACTION = 'Action';
 const EVENT = 'Event';
+const VIEW = 'View';
 
 @Injectable()
 export class SlackService implements OnModuleInit {
@@ -25,7 +27,7 @@ export class SlackService implements OnModuleInit {
     private readonly moduleRef: ModuleRef,
     @Inject('CONNECTION')
     private readonly _app: App,
-  ) { }
+  ) {}
 
   onModuleInit() {
     this._app.start();
@@ -84,6 +86,12 @@ export class SlackService implements OnModuleInit {
   registerActions(actions: Type<unknown>[]) {
     this.register(actions, SLACK_ACTION_METADATA, ACTION, (pattern, callback) =>
       this._app.action(pattern, callback),
+    );
+  }
+
+  registerViews(views: Type<unknown>[]) {
+    this.register(views, SLACK_VIEW_METADATA, VIEW, (pattern, callback) =>
+      this._app.view(pattern, callback),
     );
   }
 
