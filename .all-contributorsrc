@@ -14,7 +14,9 @@
       "profile": "https://github.com/bamada",
       "contributions": [
         "test",
-        "code"
+        "code",
+        "doc",
+        "bug"
       ]
     }
   ],
