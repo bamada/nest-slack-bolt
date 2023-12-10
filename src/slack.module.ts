@@ -56,7 +56,7 @@ export class SlackModule implements OnApplicationBootstrap {
   }
 
   onApplicationBootstrap() {
-    const { messages, actions, commands, events, shortcuts } =
+    const { messages, actions, commands, events, shortcuts, views } =
       this.explorerService.explore();
 
     this.slackService.registerMessages(messages);
@@ -64,6 +64,7 @@ export class SlackModule implements OnApplicationBootstrap {
     this.slackService.registerCommands(commands);
     this.slackService.registerEvents(events);
     this.slackService.registerShortcuts(shortcuts);
+    this.slackService.registerViews(views);
     // TODO register other events handler
   }
 }
