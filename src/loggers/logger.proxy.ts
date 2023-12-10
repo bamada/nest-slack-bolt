@@ -7,12 +7,12 @@ export class LoggerProxy extends Logger {
     super(name);
   }
 
-  info(...msg: any[]) {
-    this.log(msg);
+  public info(...msgs: any[]): void {
+    this.log(msgs);
   }
 
-  setLevel(level: LogLevel) {
-    super.localInstance.setLogLevels([
+  setLevel() {
+    this.localInstance.setLogLevels([
       'log',
       'error',
       'debug',
@@ -25,7 +25,7 @@ export class LoggerProxy extends Logger {
     return LogLevel.INFO;
   }
 
-  setName(name: string) {
-    super.context = name;
+  public setName(name: string) {
+    this.context = name;
   }
 }
