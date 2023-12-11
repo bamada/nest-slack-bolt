@@ -2,7 +2,7 @@ import { DynamicModule, Module, OnApplicationBootstrap } from '@nestjs/common';
 import { ExplorerService } from './services/explorer.service';
 import { SlackService } from './services/slack.service';
 import { ConfigModule, ConfigService } from '@nestjs/config';
-import { App, AppOptions } from '@slack/bolt';
+import { App, AppOptions, LogLevel } from '@slack/bolt';
 import { LoggerProxy } from './loggers/logger.proxy';
 import { SlackModuleOptions } from './interfaces/modules/module.options';
 
@@ -23,6 +23,7 @@ const slackServiceFactory = {
       signingSecret: configService.get('SLACK_SIGNING_SECRET'),
       socketMode: !!configService.get<boolean>('SLACK_SOCKET_MODE'),
       appToken: configService.get('SLACK_APP_TOKEN'),
+      logLevel: options.logLevel ?? LogLevel.DEBUG,
       ...options,
     };
     return new App(opts);
