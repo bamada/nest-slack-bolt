@@ -1,5 +1,17 @@
 
 
+# [1.1.0](https://github.com/bamada/nest-slack-bolt/compare/1.0.0...1.1.0) (2023-12-11)
+
+
+### Bug Fixes
+
+* **npm:** update lock file ([7825d8c](https://github.com/bamada/nest-slack-bolt/commit/7825d8ca19afdae6e36e470ac2cfee797c5acf36))
+
+
+### Features
+
+* **logging:** control bolt log levels ([c650c04](https://github.com/bamada/nest-slack-bolt/commit/c650c04449be2bd4a64ff9774f5df0c32f183fe6))
+
 # [1.0.0](https://github.com/bamada/nest-slack-bolt/compare/0.2.0...1.0.0) (2023-12-10)
 
 
