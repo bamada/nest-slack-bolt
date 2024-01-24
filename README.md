@@ -5,12 +5,31 @@
 [circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
 [circleci-url]: https://circleci.com/gh/nestjs/nest
 
-<p align="center">A <a href="http://nestjs.com/" target="blank">Nestjs</a> module to interact with <a href="https://api.slack.com/" target="_blank">Slack</a> API using <a href="https://api.slack.com/bolt">Bolt</a> SDK</p>
+<p align="center">A <a href="http://nestjs.com/" target="blank">Nestjs</a> module to interact seamlessly with <a href="https://api.slack.com/" target="_blank">Slack</a> API using the <a href="https://api.slack.com/bolt">Bolt</a> SDK.</p>
 
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
 [![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors-)<!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 ---
+## Table of Contents
+- [Description](#description)
+- [Features](#features)
+- [Installation](#installation)
+- [Setting Up](#setting-up)
+- [Usage](#usage)
+- [Examples](#examples)
+    - [Using annotations](#using-annotations)
+      - [Handling a message event](#handling-a-message-event)      
+      - [Handling an action](#handling-an-action)
+      - [Handling a command](#handling-a-command)
+      - [Handling an event](#handling-an-event)
+      - [Handling a shortcut event](#handling-a-shortcut-event)
+    - [Using the SlackService](#using-the-slackservice)
+- [To-Do List](#to-do-list)
+- [Contribute & Disclaimer](#contribute--disclaimer)
+- [Contributors](#contributors-)
+
+--- 
 
 ## Description
 
@@ -18,40 +37,51 @@ This module gives a handy way to develop Slack applications using the Nestjs fra
 
 ## Features
 
-- Handle Messages
-- Handle Commands
-- Handle Actions
-- Handle Events
-- Handle Shortcuts
+The Nestjs Slack Bolt module offers the following features to simplify the interaction between your application and Slack API:
 
+- Message Handling
+- Command Handling
+- Action Handling
+- Event Handling
+- Shortcut Handling
+
+---
 ## Installation
 
-```bash
-# yarn
-$ yarn add nestjs-slack-bolt
+The module can be installed using yarn or npm:
 
-# npm
+```bash
+$ yarn add nestjs-slack-bolt
+```
+
+OR
+
+```bash
 $ npm i nestjs-slack-bolt
 ```
 
-## Usage
+---
 
-Add these variables to the `.env` file
+## Setting Up
+
+Add these variables to the `.env` file to set up the module:
 
 ```bash
-# to define on API mode
+# To define on API mode
 SLACK_SIGNING_SECRET="**"
 
-# to define on Socket mode
+# To define on Socket mode
 SLACK_APP_TOKEN="**"
 
-# require variables
+# Required variables
 SLACK_BOT_TOKEN="**"
 SLACK_SOCKET_MODE=true
-
 ```
 
-Import the `SlackModule`
+---
+## Usage
+
+To use the module, import the `SlackModule`:
 
 ```typescript
 import { Module } from '@nestjs/common';
@@ -67,95 +97,103 @@ import { AppService } from './app.service';
 export class AppModule {}
 ```
 
-## Example
+---
 
-Using annotations
+## Examples
 
+Here are a few examples to demonstrate how you can use the Nestjs Slack Bolt module in your application:
+
+### Using annotations
+#### Handling a message event
 ```typescript
 import { Controller } from '@nestjs/common';
-import { Action, Command, Message, Event } from 'nestjs-slack-bolt';
-import { AppService } from './app.service';
-import {
-  SlackActionMiddlewareArgs,
-  SlackCommandMiddlewareArgs,
-  SlackEventMiddlewareArgs,
-} from '@slack/bolt';
+import { Message } from 'nestjs-slack-bolt';
+import { SlackEventMiddlewareArgs } from '@slack/bolt';
 
 @Controller()
 export class AppController {
-  constructor(private readonly appService: AppService) {}
-
-  @Message('hi') //Handle a message event
+  @Message('hi')
   message({ say }: SlackEventMiddlewareArgs) {
-    say('Hello');
+    say('Hello, I received your message!');
   }
-
-  @Action('click') //Handle an action
-  action({ say }: SlackActionMiddlewareArgs) {
-    say('click event received');
-  }
-
-  @Command('/list') // handle command
-  command({ say }: SlackCommandMiddlewareArgs) {
-    say('/list command received');
-  }
-
-  @Event('app_home_opened')
-  event({ say }: SlackEventMiddlewareArgs) {
-    say('app_open_event received');
-  }
-
-  @Shortcut('test_shortcut') //Handle a shortcut event
-  async shortcut({ shortcut, ack, client, logger }) {
-    try {
-      // Acknowledge shortcut request
-      await ack();
-
-      // Call the views.open method using one of the built-in WebClients
-      const result = await client.views.open({
-        trigger_id: shortcut.trigger_id,
-        view: {
-          type: 'modal',
-          title: {
-            type: 'plain_text',
-            text: 'My App',
-          },
-          close: {
-            type: 'plain_text',
-            text: 'Close',
-          },
-          blocks: [
-            {
-              type: 'section',
-              text: {
-                type: 'mrkdwn',
-                text: 'About the simplest modal you could conceive of :smile:\n\nMaybe <https://api.slack.com/reference/block-kit/interactive-components|*make the modal interactive*> or <https://api.slack.com/surfaces/modals/using#modifying|*learn more advanced modal use cases*>.',
-              },
-            },
-            {
-              type: 'context',
-              elements: [
-                {
-                  type: 'mrkdwn',
-                  text: 'Psssst this modal was designed using <https://api.slack.com/tools/block-kit-builder|*Block Kit Builder*>',
-                },
-              ],
-            },
-          ],
-        },
-      });
-
-      logger.info(result);
-    } catch (error) {
-      logger.error(error);
-    }
-  }
+  // Other handlers...
 }
 ```
 
-## Example
+#### Handling an action
+```typescript
+import { Controller } from '@nestjs/common';
+import { Action } from 'nestjs-slack-bolt';
+import { SlackActionMiddlewareArgs } from '@slack/bolt';
 
-Using the SlackService
+@Controller()
+export class AppController {
+  @Action('click')
+  action({ say }: SlackActionMiddlewareArgs) {
+    say('Click event received, nice job!');
+  }
+  // Other handlers...
+}
+```
+#### Handling a command
+```typescript
+import { Controller } from '@nestjs/common';
+import { Command } from 'nestjs-slack-bolt';
+import { SlackCommandMiddlewareArgs } from '@slack/bolt';
+
+@Controller()
+export class AppController {
+  @Command('/list')
+  command({ say }: SlackCommandMiddlewareArgs) {
+    say('The /list command has been received. Processing...');
+  }
+  // Other handlers...
+}
+```
+#### Handling an event
+```typescript
+import { Controller } from '@nestjs/common';
+import { Event } from 'nestjs-slack-bolt';
+import { SlackEventMiddlewareArgs } from '@slack/bolt';
+
+@Controller()
+export class AppController {
+  @Event('app_home_opened')
+  event({ say }: SlackEventMiddlewareArgs) {
+    say('The app was just opened!');
+  }
+  // Other handlers...
+}
+```
+#### Handling a shortcut event
+```typescript
+import { Controller } from '@nestjs/common';
+import { Shortcut } from 'nestjs-slack-bolt';
+
+@Controller()
+export class AppController {
+  @Shortcut('test_shortcut')
+  async shortcut({ shortcut, ack, client, logger }) {
+    try {
+      await ack(); //Acknowledge shortcut request
+
+      const result = await client.views.open({
+        trigger_id: shortcut.trigger_id,
+        view: { /* Your view parameters */ }
+      });
+
+      logger.info(result); // Log the result
+    } 
+    catch (error) {
+      logger.error(error); // Log any error
+    }
+  }
+  // Other handlers...
+}
+```
+These examples demonstrate how to handle different types of interactions in your Slack application using the NestJS Slack Bolt module.
+
+### Using the SlackService
 
 ```typescript
 import { Controller } from '@nestjs/common';
@@ -192,14 +230,7 @@ export class AppController {
 }
 ```
 
-## TODO
-
-- Improve testing
-- handle additional slack events
-
-## Contribute & Disclaimer
-
-....
+---
 
 ## Contributors ✨
 
