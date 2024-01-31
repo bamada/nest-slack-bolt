@@ -198,7 +198,7 @@ These examples demonstrate how to handle different types of interactions in your
 ```typescript
 import { Controller } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
-import { SlackService } from 'nestjs-slack-bolt/services/slack.service';
+import { SlackService } from 'nestjs-slack-bolt/dist/services/slack.service';
 import { Cron, CronExpression } from '@nestjs/schedule';
 import { from } from 'rxjs';
 
