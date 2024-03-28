@@ -31,7 +31,7 @@
   "devDependencies": {
     "@nestjs/cli": "10.3.2",
     "@nestjs/schematics": "10.1.1",
-    "@nestjs/testing": "10.3.5",
+    "@nestjs/testing": "10.3.7",
     "@release-it/conventional-changelog": "^8.0.0",
     "@types/jest": "29.5.12",
     "@types/node": "20.11.30",
