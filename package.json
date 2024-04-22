@@ -22,7 +22,7 @@
     "@commitlint/cli": "19.2.2",
     "@commitlint/config-angular": "19.2.2",
     "@nestjs/common": "^10.1.3",
-    "@nestjs/config": "3.2.1",
+    "@nestjs/config": "3.2.2",
     "@nestjs/core": "^10.1.3",
     "@slack/bolt": "3.17.1",
     "husky": "9.0.11",
