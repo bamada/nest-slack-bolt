@@ -1,5 +1,36 @@
 
 
+## [1.1.1](https://github.com/bamada/nest-slack-bolt/compare/1.1.0...1.1.1) (2024-05-01)
+
+
+### Bug Fixes
+
+* **deps:** update commitlint monorepo to v18.4.4 ([45c6730](https://github.com/bamada/nest-slack-bolt/commit/45c6730d2537744dd4369c3de3e5d0a895184f38))
+* **deps:** update commitlint monorepo to v18.5.0 ([dee7ad7](https://github.com/bamada/nest-slack-bolt/commit/dee7ad7bcc3bcd40acfeb31a00ddadb0527f5c3e))
+* **deps:** update commitlint monorepo to v18.6.0 ([f8a676a](https://github.com/bamada/nest-slack-bolt/commit/f8a676a98233d17e7a844ebe9c178e0346939726))
+* **deps:** update commitlint monorepo to v18.6.1 ([8042ce4](https://github.com/bamada/nest-slack-bolt/commit/8042ce4254729290c16ed349cdad5709a257517b))
+* **deps:** update commitlint monorepo to v19 ([087ccee](https://github.com/bamada/nest-slack-bolt/commit/087cceec42194a2840902f9c175489084681316e))
+* **deps:** update commitlint monorepo to v19.1.0 ([525330b](https://github.com/bamada/nest-slack-bolt/commit/525330b2fab0ae17a1f65a1649786931c7aba4c6))
+* **deps:** update commitlint monorepo to v19.2.2 ([91607d6](https://github.com/bamada/nest-slack-bolt/commit/91607d6910fb1c2e23f93ed3daf7eab74f2508c0))
+* **deps:** update commitlint monorepo to v19.3.0 ([d7286f8](https://github.com/bamada/nest-slack-bolt/commit/d7286f81ce708061ceb0e52eb38b8c7151334229))
+* **deps:** update dependency @commitlint/cli to v19.2.0 ([ef893b9](https://github.com/bamada/nest-slack-bolt/commit/ef893b9fad57b310b69c6b8baec5cb8922038902))
+* **deps:** update dependency @commitlint/cli to v19.2.1 ([350757a](https://github.com/bamada/nest-slack-bolt/commit/350757ad578e6e32051b0085609c4ae6135e7664))
+* **deps:** update dependency @nestjs/config to v3.2.0 ([1c40c1e](https://github.com/bamada/nest-slack-bolt/commit/1c40c1ef62275a999e71b2f5d110a7a3b7545717))
+* **deps:** update dependency @nestjs/config to v3.2.1 ([59136c0](https://github.com/bamada/nest-slack-bolt/commit/59136c06bfbc1262c4b87d56f77aa808ce0cdb10))
+* **deps:** update dependency @nestjs/config to v3.2.2 ([134f01a](https://github.com/bamada/nest-slack-bolt/commit/134f01a6678ccbbed428f6018ffe7043105a2be6))
+* **deps:** update dependency @slack/bolt to v3.17.0 ([370eb0d](https://github.com/bamada/nest-slack-bolt/commit/370eb0de4e9657c5fd133120ec1e87d39e22afb7))
+* **deps:** update dependency @slack/bolt to v3.17.1 ([f879aff](https://github.com/bamada/nest-slack-bolt/commit/f879aff0b005671d042c506a89a792d4b260664f))
+* **deps:** update dependency @slack/bolt to v3.18.0 ([59c8c99](https://github.com/bamada/nest-slack-bolt/commit/59c8c99084a4d3200991686581473356286fe250))
+* **deps:** update dependency husky to v9 ([505d9b7](https://github.com/bamada/nest-slack-bolt/commit/505d9b7aafa738a6fb57a6b8f3851bc2e2afdb1a))
+* **deps:** update dependency husky to v9.0.10 ([18915e9](https://github.com/bamada/nest-slack-bolt/commit/18915e9a8a3dd070f8561df56c3698b53ca596b4))
+* **deps:** update dependency husky to v9.0.11 ([8400733](https://github.com/bamada/nest-slack-bolt/commit/8400733f4045d1e26770b58c9f2f735d058b0ef4))
+* **deps:** update nest monorepo ([59e95ac](https://github.com/bamada/nest-slack-bolt/commit/59e95ac44cee36b9026ad478f636863b1402af55))
+* **deps:** update nest monorepo to v10.3.0 ([6ea3573](https://github.com/bamada/nest-slack-bolt/commit/6ea35735b654a9dd231c753eee3ac77d4f16bf7b))
+* **deps:** update nest monorepo to v10.3.1 ([66e675c](https://github.com/bamada/nest-slack-bolt/commit/66e675c8232a2b27f5e77a2976e75ebc9db0f645))
+* **deps:** update nest monorepo to v10.3.5 ([c2d2cbc](https://github.com/bamada/nest-slack-bolt/commit/c2d2cbc0419b6153d3d1a8152470c781f7f21477))
+* **deps:** update nest monorepo to v10.3.7 ([1253a6b](https://github.com/bamada/nest-slack-bolt/commit/1253a6b836c51ca2ade752797991677fd717b630))
+* **deps:** update nest monorepo to v10.3.8 ([f891328](https://github.com/bamada/nest-slack-bolt/commit/f891328debe6f06e52899d758a1a853e1d4f37bb))
+
 # [1.1.0](https://github.com/bamada/nest-slack-bolt/compare/1.0.0...1.1.0) (2023-12-11)
 
 
