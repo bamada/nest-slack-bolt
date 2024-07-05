@@ -29,7 +29,7 @@
     "reflect-metadata": "0.2.2"
   },
   "devDependencies": {
-    "@nestjs/cli": "10.4.0",
+    "@nestjs/cli": "10.4.2",
     "@nestjs/schematics": "10.1.2",
     "@nestjs/testing": "10.3.10",
     "@release-it/conventional-changelog": "^8.0.0",
