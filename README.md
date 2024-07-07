@@ -2,109 +2,111 @@
   <a href="https://github.com/bamada/nest-slack-bolt" target="blank"><img src="logo.svg" width="100" alt="Nestjs Slack Bolt" /></a>
 </p>
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
-
 <p align="center">A <a href="http://nestjs.com/" target="blank">Nestjs</a> module to interact seamlessly with <a href="https://api.slack.com/" target="_blank">Slack</a> API using the <a href="https://api.slack.com/bolt">Bolt</a> SDK.</p>
 
-[![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors-)<!-- ALL-CONTRIBUTORS-BADGE:END -->
+<p align="center">
+  <a href="https://www.npmjs.com/package/nestjs-slack-bolt" target="_blank"><img src="https://img.shields.io/npm/v/nestjs-slack-bolt.svg" alt="NPM Version" /></a>
+  <a href="https://www.npmjs.com/package/nestjs-slack-bolt" target="_blank"><img src="https://img.shields.io/npm/l/nestjs-slack-bolt.svg" alt="Package License" /></a>
+  <a href="https://www.npmjs.com/package/nestjs-slack-bolt" target="_blank"><img src="https://img.shields.io/npm/dm/nestjs-slack-bolt.svg" alt="NPM Downloads" /></a>
+  <a href="https://github.com/bamada/nest-slack-bolt/actions"><img src="https://github.com/bamada/nest-slack-bolt/workflows/CI/badge.svg" alt="CI Status" /></a>
+  <a href="https://github.com/bamada/nest-slack-bolt#contributors-"><img src="https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square" alt="All Contributors" /></a>
+  <a href="https://github.com/prettier/prettier"><img src="https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square" alt="code style: prettier" /></a>
+</p>
 
----
 ## Table of Contents
+
 - [Description](#description)
 - [Features](#features)
 - [Installation](#installation)
-- [Setting Up](#setting-up)
+- [Quick Start](#quick-start)
+- [Configuration](#configuration)
 - [Usage](#usage)
-- [Examples](#examples)
-    - [Using annotations](#using-annotations)
-      - [Handling a message event](#handling-a-message-event)      
-      - [Handling an action](#handling-an-action)
-      - [Handling a command](#handling-a-command)
-      - [Handling an event](#handling-an-event)
-      - [Handling a shortcut event](#handling-a-shortcut-event)
-    - [Using the SlackService](#using-the-slackservice)
-- [To-Do List](#to-do-list)
-- [Contribute & Disclaimer](#contribute--disclaimer)
+  - [Using annotations](#using-annotations)
+    - [Handling a message event](#handling-a-message-event)
+    - [Handling an action](#handling-an-action)
+    - [Handling a command](#handling-a-command)
+    - [Handling an event](#handling-an-event)
+    - [Handling a shortcut event](#handling-a-shortcut-event)
+  - [Using the SlackService](#using-the-slackservice)
+- [Troubleshooting](#troubleshooting)
+- [Changelog](#changelog)
+- [Contributing](#contributing)
+- [Support](#support)
+- [License](#license)
 - [Contributors](#contributors-)
-
---- 
 
 ## Description
 
-This module gives a handy way to develop Slack applications using the Nestjs framework
+This module provides a convenient way to develop Slack applications using the Nestjs framework. It seamlessly integrates the Slack Bolt SDK with NestJS, allowing you to leverage the power of both platforms.
 
 ## Features
 
-The Nestjs Slack Bolt module offers the following features to simplify the interaction between your application and Slack API:
+- **Message Handling**: Easily respond to and process incoming Slack messages.
+- **Command Handling**: Implement custom Slack commands for your application.
+- **Action Handling**: React to user interactions with buttons, select menus, and other Slack UI elements.
+- **Event Handling**: Listen and respond to various Slack events in real-time.
+- **Shortcut Handling**: Create and manage global and message shortcuts.
+- **View Submissions**: Process and respond to modal view submissions.
+- **Seamless NestJS Integration**: Utilize NestJS dependency injection and module system with Slack Bolt.
+- **Decorators for Easy Setup**: Use custom decorators to quickly set up event listeners.
 
-- Message Handling
-- Command Handling
-- Action Handling
-- Event Handling
-- Shortcut Handling
-
----
 ## Installation
 
-The module can be installed using yarn or npm:
-
 ```bash
+$ npm install nestjs-slack-bolt
+# or
 $ yarn add nestjs-slack-bolt
 ```
 
-OR
+## Quick Start
 
-```bash
-$ npm i nestjs-slack-bolt
-```
-
----
-
-## Setting Up
-
-Add these variables to the `.env` file to set up the module:
-
-```bash
-# To define on API mode
-SLACK_SIGNING_SECRET="**"
-
-# To define on Socket mode
-SLACK_APP_TOKEN="**"
-
-# Required variables
-SLACK_BOT_TOKEN="**"
-SLACK_SOCKET_MODE=true
-```
-
----
-## Usage
-
-To use the module, import the `SlackModule`:
+1. Install the package
+2. Set up environment variables (see Configuration)
+3. Import SlackModule in your app.module.ts:
 
 ```typescript
 import { Module } from '@nestjs/common';
 import { SlackModule } from 'nestjs-slack-bolt';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
 
 @Module({
   imports: [SlackModule.forRoot()],
-  controllers: [AppController],
-  providers: [AppService],
 })
 export class AppModule {}
 ```
 
----
+4. Use decorators in your controllers to handle Slack events
 
-## Examples
+## Configuration
 
-Here are a few examples to demonstrate how you can use the Nestjs Slack Bolt module in your application:
+Add these variables to your `.env` file:
+
+```bash
+# Required for all modes
+SLACK_BOT_TOKEN="xoxb-your-bot-token"
+
+# Required for socket mode
+SLACK_APP_TOKEN="xapp-your-app-token"
+SLACK_SOCKET_MODE=true
+
+# Required for HTTP mode
+SLACK_SIGNING_SECRET="your-signing-secret"
+```
+
+You can also pass options to `SlackModule.forRoot()`:
+
+```typescript
+SlackModule.forRoot({
+  logLevel: LogLevel.DEBUG,
+  // other Bolt app options
+});
+```
+
+## Usage
 
 ### Using annotations
+
 #### Handling a message event
+
 ```typescript
 import { Controller } from '@nestjs/common';
 import { Message } from 'nestjs-slack-bolt';
@@ -121,6 +123,7 @@ export class AppController {
 ```
 
 #### Handling an action
+
 ```typescript
 import { Controller } from '@nestjs/common';
 import { Action } from 'nestjs-slack-bolt';
@@ -135,7 +138,9 @@ export class AppController {
   // Other handlers...
 }
 ```
+
 #### Handling a command
+
 ```typescript
 import { Controller } from '@nestjs/common';
 import { Command } from 'nestjs-slack-bolt';
@@ -150,7 +155,9 @@ export class AppController {
   // Other handlers...
 }
 ```
+
 #### Handling an event
+
 ```typescript
 import { Controller } from '@nestjs/common';
 import { Event } from 'nestjs-slack-bolt';
@@ -165,7 +172,9 @@ export class AppController {
   // Other handlers...
 }
 ```
+
 #### Handling a shortcut event
+
 ```typescript
 import { Controller } from '@nestjs/common';
 import { Shortcut } from 'nestjs-slack-bolt';
@@ -179,19 +188,19 @@ export class AppController {
 
       const result = await client.views.open({
         trigger_id: shortcut.trigger_id,
-        view: { /* Your view parameters */ }
+        view: {
+          /* Your view parameters */
+        },
       });
 
       logger.info(result); // Log the result
-    } 
-    catch (error) {
+    } catch (error) {
       logger.error(error); // Log any error
     }
   }
   // Other handlers...
 }
 ```
-These examples demonstrate how to handle different types of interactions in your Slack application using the NestJS Slack Bolt module.
 
 ### Using the SlackService
 
@@ -230,7 +239,31 @@ export class AppController {
 }
 ```
 
----
+## Troubleshooting
+
+Here are some common issues and their solutions:
+
+1. "**Cannot find module 'nestjs-slack-bolt'**": Ensure you've installed the package correctly.
+2. "**Invalid token**": Double-check your SLACK_BOT_TOKEN in the .env file.
+3. **Socket mode not working**: Verify that SLACK_APP_TOKEN is set and SLACK_SOCKET_MODE is true.
+
+For more issues, please check our GitHub issues or open a new one.
+
+## Changelog
+
+See CHANGELOG.md for details on recent changes.
+
+## Contributing
+
+We welcome contributions! Please see our CONTRIBUTING.md for details on how to contribute.
+
+## Support
+
+For support, please open an issue on our GitHub repository.
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
 
 ## Contributors ✨
 
@@ -253,4 +286,4 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
-This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
+This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification.
