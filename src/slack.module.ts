@@ -16,14 +16,16 @@ const slackServiceFactory = {
     loggerProxy: LoggerProxy,
     options: SlackModuleOptions,
   ) => {
+    const logLevel = options.logLevel ?? LogLevel.DEBUG;
     loggerProxy.setName(SLACK);
+    loggerProxy.setLevel(logLevel);
     const opts: AppOptions = {
       logger: loggerProxy,
       token: configService.get('SLACK_BOT_TOKEN'),
       signingSecret: configService.get('SLACK_SIGNING_SECRET'),
       socketMode: !!configService.get<boolean>('SLACK_SOCKET_MODE'),
       appToken: configService.get('SLACK_APP_TOKEN'),
-      logLevel: options.logLevel ?? LogLevel.DEBUG,
+      logLevel: logLevel,
       ...options,
     };
     return new App(opts);
