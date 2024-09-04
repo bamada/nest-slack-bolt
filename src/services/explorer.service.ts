@@ -12,7 +12,6 @@ import {
   SLACK_VIEW_METADATA,
 } from '../decorators/constants';
 import { IEventHandler } from '../interfaces/events/event-handler.interface';
-import { IEvent } from '../interfaces/events/event.interface';
 import { IMetadataBase } from '../interfaces/metadata/metadata.interface';
 
 @Injectable()
@@ -25,27 +24,27 @@ export class ExplorerService {
   explore() {
     const modules = [...this.modulesContainer.values()];
 
-    const messages = this.flatMap<IEventHandler<IEvent>>(modules, (instance) =>
+    const messages = this.flatMap<IEventHandler>(modules, (instance) =>
       this.filterProvider(instance, SLACK_MESSAGE_METADATA),
     );
 
-    const actions = this.flatMap<IEventHandler<IEvent>>(modules, (instance) =>
+    const actions = this.flatMap<IEventHandler>(modules, (instance) =>
       this.filterProvider(instance, SLACK_ACTION_METADATA),
     );
 
-    const commands = this.flatMap<IEventHandler<IEvent>>(modules, (instance) =>
+    const commands = this.flatMap<IEventHandler>(modules, (instance) =>
       this.filterProvider(instance, SLACK_COMMAND_METADATA),
     );
 
-    const events = this.flatMap<IEventHandler<IEvent>>(modules, (instance) =>
+    const events = this.flatMap<IEventHandler>(modules, (instance) =>
       this.filterProvider(instance, SLACK_EVENT_METADATA),
     );
 
-    const shortcuts = this.flatMap<IEventHandler<IEvent>>(modules, (instance) =>
+    const shortcuts = this.flatMap<IEventHandler>(modules, (instance) =>
       this.filterProvider(instance, SLACK_SHORTCUT_METADATA),
     );
 
-    const views = this.flatMap<IEventHandler<IEvent>>(modules, (instance) =>
+    const views = this.flatMap<IEventHandler>(modules, (instance) =>
       this.filterProvider(instance, SLACK_VIEW_METADATA),
     );
 
