@@ -1,5 +1,12 @@
 
 
+# [1.3.0](https://github.com/bamada/nest-slack-bolt/compare/1.2.0...1.3.0) (2024-09-04)
+
+
+### Features
+
+* add support for slack module async register ([d4c00c5](https://github.com/bamada/nest-slack-bolt/commit/d4c00c5a2201cbd793f460d8ede5666e6fe500cb))
+
 # [1.2.0](https://github.com/bamada/nest-slack-bolt/compare/1.1.1...1.2.0) (2024-09-04)
 
 
