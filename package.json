@@ -36,7 +36,7 @@
     "prepublishOnly": "npm run build",
     "publish:next": "npm publish --access public --tag next",
     "release": "release-it",
-    "prepare": "husky install"
+    "prepare": "husky"
   },
   "dependencies": {
     "@nestjs/common": "^9.0.0 || ^10.1.3",
