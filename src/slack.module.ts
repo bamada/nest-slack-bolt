@@ -16,7 +16,7 @@ const slackServiceFactory = {
     loggerProxy: LoggerProxy,
     options: SlackModuleOptions,
   ) => {
-    const logLevel = options.logLevel ?? LogLevel.DEBUG;
+    const logLevel = options.logLevel ?? LogLevel.INFO;
     loggerProxy.setName(SLACK);
     loggerProxy.setLevel(logLevel);
     const opts: AppOptions = {
