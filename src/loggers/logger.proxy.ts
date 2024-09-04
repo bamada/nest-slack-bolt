@@ -10,32 +10,81 @@ export class LoggerProxy extends Logger {
     super(name);
   }
 
+  /**
+   * Logs information messages
+   * @param msgs Array of messages to log
+   */
   public info(...msgs: any[]): void {
     this.log(msgs);
   }
 
-  public setLevel(level: SlackLogLevel) {
-    if (level !== SlackLogLevel.INFO) {
-      this.level = level as NestLogLevel;
-    }
+  /**
+   * Sets the log level for the logger
+   * @param level The log level to set (from SlackLogLevel enum)
+   */
+  public setLevel(level: SlackLogLevel): void {
+    this.level = this.convertSlackToNestLogLevel(level);
 
-    if (this.localInstance.setLogLevels) {
+    if (this.localInstance && this.localInstance?.setLogLevels) {
       this.localInstance.setLogLevels([this.level]);
     } else {
-      this.localInstance.warn(
-        'setLogLevels is not available on the Logger instance.',
-      );
+      this.warn('setLogLevels is not available on the Logger instance.');
     }
   }
 
+  /**
+   * Gets the current log level
+   * @returns The current log level (from SlackLogLevel enum)
+   */
   getLevel(): SlackLogLevel {
-    if (this.level !== 'log') {
-      return SlackLogLevel.INFO;
-    }
-    return this.level as SlackLogLevel;
+    return this.convertNestToSlackLogLevel(this.level);
   }
 
+  /**
+   * Sets the name (context) for the logger
+   * @param name The new name for the logger
+   */
   public setName(name: string) {
     this.context = name;
+  }
+
+  /**
+   * Converts a SlackLogLevel to a NestLogLevel
+   * @param level The SlackLogLevel to convert
+   * @returns The equivalent NestLogLevel
+   */
+  private convertSlackToNestLogLevel(level: SlackLogLevel): NestLogLevel {
+    switch (level) {
+      case SlackLogLevel.DEBUG:
+        return 'debug';
+      case SlackLogLevel.INFO:
+        return 'log';
+      case SlackLogLevel.WARN:
+        return 'warn';
+      case SlackLogLevel.ERROR:
+        return 'error';
+      default:
+        return 'log';
+    }
+  }
+
+  /**
+   * Converts a NestLogLevel to a SlackLogLevel
+   * @param level The NestLogLevel to convert
+   * @returns The equivalent SlackLogLevel
+   */
+  private convertNestToSlackLogLevel(level: NestLogLevel): SlackLogLevel {
+    switch (level) {
+      case 'debug':
+        return SlackLogLevel.DEBUG;
+      case 'log':
+        return SlackLogLevel.INFO;
+      case 'warn':
+        return SlackLogLevel.WARN;
+      case 'error':
+        return SlackLogLevel.ERROR;
+      default:
+        return SlackLogLevel.INFO;
+    }
   }
 }
