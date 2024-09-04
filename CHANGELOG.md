@@ -1,5 +1,30 @@
 
 
+# [1.2.0](https://github.com/bamada/nest-slack-bolt/compare/1.1.1...1.2.0) (2024-09-04)
+
+
+### Bug Fixes
+
+* **deps:** update commitlint monorepo to v19.4.1 ([306226c](https://github.com/bamada/nest-slack-bolt/commit/306226c14d1cf3285c7a7e3b0b0542241b6fe67f))
+* **deps:** update dependency @commitlint/cli to v19.4.0 ([d2f7f9f](https://github.com/bamada/nest-slack-bolt/commit/d2f7f9f24290f9bc65821b46d2c49228e6d7ea61))
+* **deps:** update dependency @nestjs/config to v3.2.3 ([d694a6f](https://github.com/bamada/nest-slack-bolt/commit/d694a6fe15bccc157e0642132098f6d6e37ccd47))
+* **deps:** update dependency @slack/bolt to v3.19.0 ([024593c](https://github.com/bamada/nest-slack-bolt/commit/024593c5a54c65d1c2d8825e62cf981a1fadd0f0))
+* **deps:** update dependency @slack/bolt to v3.21.1 ([8b5b6e3](https://github.com/bamada/nest-slack-bolt/commit/8b5b6e3ad368e930fa2fc2b1c3d761542002e8cf))
+* **deps:** update dependency husky to v9.1.4 ([53561ae](https://github.com/bamada/nest-slack-bolt/commit/53561aef2e3c7c6bc5fcfbb5571607e95cd1d0f0))
+* **deps:** update dependency husky to v9.1.5 ([2fd411c](https://github.com/bamada/nest-slack-bolt/commit/2fd411cccfdad8cb6eab000cf21779673e47bf76))
+* **deps:** update nest monorepo ([55cac63](https://github.com/bamada/nest-slack-bolt/commit/55cac637183cf77157040cb159e67556ff52a066))
+* **deps:** update nest monorepo ([01e9bb7](https://github.com/bamada/nest-slack-bolt/commit/01e9bb7906be7ef1d673637275795234b90a99c9))
+* **deps:** update nest monorepo to v10.3.9 ([5fce311](https://github.com/bamada/nest-slack-bolt/commit/5fce31181baca91359160b1988e468d123e085a6))
+* **husky:** fix husky deprecated msg ([7773b7f](https://github.com/bamada/nest-slack-bolt/commit/7773b7f1c26ba48d166fa5d41fa1f721db9cde35))
+* **husky:** update pre-commit hook ([8de0207](https://github.com/bamada/nest-slack-bolt/commit/8de0207ff2a8151ebae3a66166a7e484055dd1da))
+* **logger:** take into account the log level ([e71b291](https://github.com/bamada/nest-slack-bolt/commit/e71b2915b03ab78a03debbafc0776f58dee3f2f8))
+* **logging:** change the default logging to info ([3f465c2](https://github.com/bamada/nest-slack-bolt/commit/3f465c285a2b5331caf1a06096661c880c5bcebe))
+
+
+### Features
+
+* **improv:** fix log level & improve readme ([ff970fc](https://github.com/bamada/nest-slack-bolt/commit/ff970fc619d51751e70b35cc688870b188eaeed0))
+
 ## [1.1.1](https://github.com/bamada/nest-slack-bolt/compare/1.1.0...1.1.1) (2024-05-01)
 
 
