@@ -1,5 +1,15 @@
 
 
+## [1.3.1](https://github.com/bamada/nest-slack-bolt/compare/1.3.0...1.3.1) (2024-10-02)
+
+
+### Bug Fixes
+
+* **#425:** remove esm module type ([d1a54e3](https://github.com/bamada/nest-slack-bolt/commit/d1a54e30895e20af1d075e415b1cc818f86b5e6c)), closes [#425](https://github.com/bamada/nest-slack-bolt/issues/425)
+* **deps:** update dependency @slack/bolt to v3.21.2 ([cc05bca](https://github.com/bamada/nest-slack-bolt/commit/cc05bcad7eaaface819076172b9981a799d626fd))
+* **deps:** update dependency @slack/bolt to v3.21.4 ([83033b6](https://github.com/bamada/nest-slack-bolt/commit/83033b6385d06f6696d5884e031ed16398ad6ab0))
+* **deps:** update dependency @slack/bolt to v3.22.0 ([32e8805](https://github.com/bamada/nest-slack-bolt/commit/32e880528d17a41a770844db48edc1c214348fcf))
+
 # [1.3.0](https://github.com/bamada/nest-slack-bolt/compare/1.2.0...1.3.0) (2024-09-04)
 
 
