@@ -4,7 +4,6 @@
   "description": "A NestJS module for seamless integration with Slack using the Bolt SDK",
   "author": "bamada",
   "license": "MIT",
-  "type": "module",
   "homepage": "https://github.com/bamada/nest-slack-bolt#readme",
   "repository": {
     "type": "git",
