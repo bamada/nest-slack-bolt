@@ -55,7 +55,7 @@
     "@nestjs/testing": "10.4.5",
     "@release-it/conventional-changelog": "^9.0.0",
     "@types/jest": "29.5.13",
-    "@types/node": "20.16.11",
+    "@types/node": "20.16.15",
     "@types/supertest": "6.0.2",
     "@typescript-eslint/eslint-plugin": "8.9.0",
     "@typescript-eslint/parser": "8.9.0",
