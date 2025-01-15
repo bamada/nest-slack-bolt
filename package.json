@@ -59,7 +59,7 @@
     "@types/supertest": "6.0.2",
     "@typescript-eslint/eslint-plugin": "8.20.0",
     "@typescript-eslint/parser": "8.20.0",
-    "eslint": "9.17.0",
+    "eslint": "9.18.0",
     "eslint-config-prettier": "10.0.1",
     "eslint-plugin-prettier": "5.2.2",
     "globals": "^15.9.0",
