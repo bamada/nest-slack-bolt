@@ -1,4 +1,4 @@
-import { type types } from '@slack/bolt';
+import type { types } from '@slack/bolt';
 import { MetadataBase } from './base.decorator';
 import { SLACK_EVENT_METADATA } from './constants';
 
