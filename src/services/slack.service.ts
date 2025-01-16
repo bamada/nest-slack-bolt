@@ -29,8 +29,8 @@ export class SlackService implements OnModuleInit {
     private readonly _app: App,
   ) {}
 
-  onModuleInit() {
-    this._app.start();
+  async onModuleInit() {
+    await this._app.start();
   }
 
   /**
