@@ -36,13 +36,14 @@
     "prepublishOnly": "npm run build",
     "publish:next": "npm publish --access public --tag next",
     "release": "release-it",
-    "prepare": "husky"
+    "prepare": "husky",
+    "clean": "npm cache clean --force"
   },
   "dependencies": {
     "@nestjs/common": "^9.0.0 || ^10.1.3",
     "@nestjs/config": "3.3.0",
     "@nestjs/core": "^9.0.0 || ^10.1.3",
-    "@slack/bolt": "3.22.0",
+    "@slack/bolt": "4.2.0",
     "reflect-metadata": "0.2.2"
   },
   "devDependencies": {
@@ -54,6 +55,7 @@
     "@nestjs/schematics": "10.2.3",
     "@nestjs/testing": "10.4.15",
     "@release-it/conventional-changelog": "^10.0.0",
+    "@types/express": "^5.0.0",
     "@types/jest": "29.5.14",
     "@types/node": "22.10.6",
     "@types/supertest": "6.0.2",
