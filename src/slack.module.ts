@@ -1,5 +1,6 @@
 import {
   ConfigurableModuleBuilder,
+  DynamicModule,
   Module,
   OnApplicationBootstrap,
 } from '@nestjs/common';
@@ -67,8 +68,13 @@ export class SlackModule
     super();
   }
 
-  static forRoot(options?: SlackModuleOptions) {
-    return super.forRoot(options ?? {});
+  static forRoot(options?: SlackModuleOptions): DynamicModule {
+    const slackModule = super.forRoot(options ?? {});
+    return {
+      ...slackModule,
+      module: SlackModule,
+      global: true,
+    };
   }
 
   onApplicationBootstrap() {
