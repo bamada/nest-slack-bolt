@@ -41,7 +41,7 @@
   },
   "dependencies": {
     "@nestjs/common": "^10.0.0 || ^11.0.0",
-    "@nestjs/config": "4.0.0",
+    "@nestjs/config": "4.0.1",
     "@nestjs/core": "^10.0.0 || ^11.0.0",
     "@slack/bolt": "4.2.1",
     "reflect-metadata": "0.2.2"
@@ -51,9 +51,9 @@
     "@commitlint/config-angular": "19.8.0",
     "@eslint/eslintrc": "^3.1.0",
     "@eslint/js": "^9.9.1",
-    "@nestjs/cli": "11.0.4",
-    "@nestjs/schematics": "11.0.1",
-    "@nestjs/testing": "11.0.10",
+    "@nestjs/cli": "11.0.5",
+    "@nestjs/schematics": "11.0.2",
+    "@nestjs/testing": "11.0.11",
     "@release-it/conventional-changelog": "^10.0.0",
     "@types/express": "^5.0.0",
     "@types/jest": "29.5.14",
