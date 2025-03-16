@@ -1,7 +1,10 @@
 import {
-  ConfigurableModuleBuilder,
+  DynamicModule,
   Module,
   OnApplicationBootstrap,
+  Provider,
+  Type,
+  ForwardReference,
 } from '@nestjs/common';
 import { ExplorerService } from './services/explorer.service';
 import { SlackService } from './services/slack.service';
@@ -11,15 +14,24 @@ import { LoggerProxy } from './loggers/logger.proxy';
 import { SlackModuleOptions } from './interfaces/modules/module.options';
 import { SLACK, SLACK_MODULE_OPTIONS } from './tokens';
 
-const { ConfigurableModuleClass: SlackModuleConfigurableModuleClass } =
-  new ConfigurableModuleBuilder<SlackModuleOptions>({
-    moduleName: 'SlackModule',
-    optionsInjectionToken: SLACK_MODULE_OPTIONS,
-  })
-    .setClassMethodName('forRoot')
-    .build();
+export interface SlackModuleAsyncOptions {
+  imports?: Array<
+    Type<any> | DynamicModule | Promise<DynamicModule> | ForwardReference
+  >;
+  useFactory?: (
+    ...args: any[]
+  ) => Promise<SlackModuleOptions> | SlackModuleOptions;
+  useClass?: Type<SlackModuleOptionsFactory>;
+  useExisting?: Type<SlackModuleOptionsFactory>;
+  useValue?: SlackModuleOptions;
+  inject?: any[];
+}
 
-const slackServiceFactory = {
+export interface SlackModuleOptionsFactory {
+  createSlackOptions(): Promise<SlackModuleOptions> | SlackModuleOptions;
+}
+
+const createSlackConnection = {
   provide: 'CONNECTION',
   useFactory: (
     configService: ConfigService,
@@ -53,22 +65,106 @@ const slackServiceFactory = {
 
 @Module({
   imports: [ConfigModule.forRoot()],
-  providers: [ExplorerService, LoggerProxy, SlackService, slackServiceFactory],
+  providers: [ExplorerService, LoggerProxy, SlackService],
   exports: [SlackService],
 })
-export class SlackModule
-  extends SlackModuleConfigurableModuleClass
-  implements OnApplicationBootstrap
-{
+export class SlackModule implements OnApplicationBootstrap {
   constructor(
     private readonly slackService: SlackService,
     private readonly explorerService: ExplorerService,
-  ) {
-    super();
+  ) {}
+
+  static forRoot(options?: SlackModuleOptions): DynamicModule {
+    return {
+      module: SlackModule,
+      imports: [ConfigModule.forRoot()],
+      providers: [
+        {
+          provide: SLACK_MODULE_OPTIONS,
+          useValue: options ?? {},
+        },
+        ExplorerService,
+        LoggerProxy,
+        SlackService,
+        createSlackConnection,
+      ],
+      global: true,
+      exports: [SlackService],
+    };
   }
 
-  static forRoot(options?: SlackModuleOptions) {
-    return super.forRoot(options ?? {});
+  static forRootAsync(options: SlackModuleAsyncOptions): DynamicModule {
+    return {
+      module: SlackModule,
+      imports: [...(options.imports || []), ConfigModule.forRoot()],
+      providers: [
+        ...this.createAsyncProviders(options),
+        ExplorerService,
+        LoggerProxy,
+        SlackService,
+        createSlackConnection,
+      ],
+      global: true,
+      exports: [SlackService],
+    };
+  }
+
+  /**
+   * Create providers based on the async options
+   * @param options The async module options
+   * @returns An array of providers
+   */
+  private static createAsyncProviders(
+    options: SlackModuleAsyncOptions,
+  ): Provider[] {
+    if (options.useValue) {
+      return [
+        {
+          provide: SLACK_MODULE_OPTIONS,
+          useValue: options.useValue,
+        },
+      ];
+    }
+
+    if (options.useFactory) {
+      return [
+        {
+          provide: SLACK_MODULE_OPTIONS,
+          useFactory: options.useFactory,
+          inject: options.inject || [],
+        },
+      ];
+    }
+
+    if (options.useClass) {
+      return [
+        {
+          provide: options.useClass,
+          useClass: options.useClass,
+        },
+        {
+          provide: SLACK_MODULE_OPTIONS,
+          useFactory: async (optionsFactory: SlackModuleOptionsFactory) =>
+            optionsFactory.createSlackOptions(),
+          inject: [options.useClass],
+        },
+      ];
+    }
+
+    if (options.useExisting) {
+      return [
+        {
+          provide: SLACK_MODULE_OPTIONS,
+          useFactory: async (optionsFactory: SlackModuleOptionsFactory) =>
+            optionsFactory.createSlackOptions(),
+          inject: [options.useExisting],
+        },
+      ];
+    }
+
+    throw new Error(
+      'Invalid SlackModuleAsyncOptions configuration. Provide useValue, useFactory, useClass, or useExisting.',
+    );
   }
 
   onApplicationBootstrap() {
