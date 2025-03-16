@@ -88,6 +88,7 @@ export class SlackModule implements OnApplicationBootstrap {
         SlackService,
         createSlackConnection,
       ],
+      global: true,
       exports: [SlackService],
     };
   }
@@ -103,6 +104,7 @@ export class SlackModule implements OnApplicationBootstrap {
         SlackService,
         createSlackConnection,
       ],
+      global: true,
       exports: [SlackService],
     };
   }
