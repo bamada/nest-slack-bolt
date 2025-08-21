@@ -115,7 +115,7 @@ import { SlackEventMiddlewareArgs } from '@slack/bolt';
 @Controller()
 export class AppController {
   @Message('hi')
-  message({ say }: SlackEventMiddlewareArgs) {
+  message({ say }: SlackEventMiddlewareArgs<'message'>) {
     say('Hello, I received your message!');
   }
   // Other handlers...
@@ -166,7 +166,7 @@ import { SlackEventMiddlewareArgs } from '@slack/bolt';
 @Controller()
 export class AppController {
   @Event('app_home_opened')
-  event({ say }: SlackEventMiddlewareArgs) {
+  event({ say }: SlackEventMiddlewareArgs<'app_home_opened'>) {
     say('The app was just opened!');
   }
   // Other handlers...
