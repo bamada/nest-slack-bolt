@@ -6,3 +6,4 @@
 
 export * from './slack.module';
 export * from './decorators';
+export * from './services/slack.service';
