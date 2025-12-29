@@ -1,6 +1,6 @@
 {
   "name": "nestjs-slack-bolt",
-  "version": "1.4.0",
+  "version": "1.5.0",
   "description": "A NestJS module for seamless integration with Slack using the Bolt SDK",
   "author": "bamada",
   "license": "MIT",
