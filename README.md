@@ -1,3 +1,5 @@
+
+
 <p align="center">
   <a href="https://github.com/bamada/nest-slack-bolt" target="blank"><img src="logo.svg" width="100" alt="Nestjs Slack Bolt" /></a>
 </p>
@@ -9,7 +11,7 @@
   <a href="https://www.npmjs.com/package/nestjs-slack-bolt" target="_blank"><img src="https://img.shields.io/npm/l/nestjs-slack-bolt.svg" alt="Package License" /></a>
   <a href="https://www.npmjs.com/package/nestjs-slack-bolt" target="_blank"><img src="https://img.shields.io/npm/dm/nestjs-slack-bolt.svg" alt="NPM Downloads" /></a>
   <a href="https://github.com/bamada/nest-slack-bolt/actions"><img src="https://github.com/bamada/nest-slack-bolt/workflows/CI/badge.svg" alt="CI Status" /></a>
-  <a href="https://github.com/bamada/nest-slack-bolt#contributors-"><img src="https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square" alt="All Contributors" /></a>
+  <a href="https://github.com/bamada/nest-slack-bolt#contributors-"><img src="https://img.shields.io/badge/all_contributors-3-orange.svg?style=flat-square" alt="All Contributors" /></a>
   <a href="https://github.com/prettier/prettier"><img src="https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square" alt="code style: prettier" /></a>
 </p>
 
